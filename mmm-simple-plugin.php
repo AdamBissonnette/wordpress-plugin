@@ -31,6 +31,10 @@ function WordPressPlugin_init()
 {
     global $WordPressPlugin;
     $WordPressPlugin = new WordPressPlugin();
+
+    if ( is_admin() ) {
+        new WPFDGitHubPluginUpdater( __FILE__, 'MManifesto', "wordpress-plugin" );
+    }
 }
 
 
