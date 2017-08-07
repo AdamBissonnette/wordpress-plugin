@@ -1,4 +1,5 @@
-=== WordPressPlugin ===
+# WordPressPlugin
+
 Contributors: MManifesto
 Donate link: http://www.mediamanifesto.com/donate/
 Tags: File List, Shortcode
