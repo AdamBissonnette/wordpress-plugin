@@ -1,42 +1,4 @@
 <?php
-/**
- * @package WordPress Plugin
- * @version 1.0
- */
-/*
-Plugin Name: WordPress Plugin
-Plugin URI: https://github.com/MManifesto/wordpress-plugin
-Description: Simple Github backed plugin
-Author: Adam Bissonnette
-Version: 1.0
-*/
-
-class WordPressPlugin
-{
-    public static $attsKeyTemplate = "{%s}";
-
-    function WordPressPlugin()
-    {
-        add_shortcode( 'HelloWorld', array(&$this, 'HelloWorld') );
-    }
-
-    function HelloWorld($atts, $content="")
-    {
-        return "Hello World";
-    }
-}
-
-add_action( 'init', 'WordPressPlugin_init', 5 );
-function WordPressPlugin_init()
-{
-    global $WordPressPlugin;
-    $WordPressPlugin = new WordPressPlugin();
-
-    if ( is_admin() ) {
-        new WPFDGitHubPluginUpdater( __FILE__, 'MManifesto', "wordpress-plugin" );
-    }
-}
-
 
 class WPFDGitHubPluginUpdater {
 
@@ -90,7 +52,7 @@ class WPFDGitHubPluginUpdater {
      */
     private function getRepoReleaseInfo()
     {
-        if ( ! empty( $this->githubAPIResult ) )
+         if ( ! empty( $this->githubAPIResult ) )
         {
             return;
         }
@@ -105,6 +67,7 @@ class WPFDGitHubPluginUpdater {
 
         // Get the results
         $this->githubAPIResult = wp_remote_retrieve_body( wp_remote_get( $url ) );
+
 
         if ( ! empty( $this->githubAPIResult ) )
         {
